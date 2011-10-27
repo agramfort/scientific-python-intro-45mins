@@ -180,7 +180,7 @@ Python can replace your pocket calculator with : ``+``, ``-``, ``*``, ``/``, ``%
 
 ----
 
-Python basics: container types
+Container types: list
 --------------------------------------------------------------------------------
 
 The *list* type:
@@ -211,7 +211,7 @@ Concatenation and access:
 
 ----
 
-Python basics: container types
+Container types: list
 --------------------------------------------------------------------------------
 
 * Slicing: obtaining sublists of regularly-spaced elements
@@ -237,7 +237,7 @@ Note that i is in ``l[start:stop]`` if ``start <= i < stop``
 
 ----
 
-Python basics: container types
+Container types: list
 --------------------------------------------------------------------------------
 
 Reverse `l`:
@@ -265,10 +265,8 @@ That's all you need to know today.
 
 ----
 
-Python basics: data types
+Container types: string or ``str``
 --------------------------------------------------------------------------------
-
-Strings: *str*
 
 .. sourcecode:: python
 
@@ -308,7 +306,7 @@ values**. It is an **unordered** container:
     >>> phone['alex'] = 5915
     >>> phone
     {'khaldoun': 5578, 'alex': 5915, 'ellen': 5752}  # no order
-    >>> phone['sebastian']
+    >>> phone['khaldoun']
     5578
     >>> phone.keys()
     ['khaldoun', 'alex', 'ellen']
@@ -535,6 +533,189 @@ You can also choose:
 
 -----
 
+Numpy : Indexing and slicing
+--------------------------------------------------------------------------------
+
+.. sourcecode:: python
+
+    >>> a = np.diag(np.arange(5))
+    >>> a
+    array([[0, 0, 0],
+           [0, 1, 0],
+           [0, 0, 2]])
+    >>> a[1, 1]
+    1
+    >>> a[2, 1] = 10  # third line, second column
+    >>> a
+    array([[ 0,  0,  0],
+           [ 0,  1,  0],
+           [ 0, 10,  2]])
+    >>> a[1]  # takes the entire 2 second row !
+    array([0, 1, 0, 0, 0])
+
+-----
+
+Numpy : Indexing and slicing
+--------------------------------------------------------------------------------
+
+Like Python lists arrays can be sliced:
+
+.. sourcecode:: python
+
+    >>> a = np.arange(10)
+    >>> a
+    array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+    >>> a[2:9:3]  # [start:end:step]
+    array([2, 5, 8])
+    >>> a[::2]  # every 2 elements
+    array([0, 2, 4, 6, 8])
+
+-----
+
+Numpy : Copies and views
+--------------------------------------------------------------------------------
+
+* A slicing operation creates a **view** on the original array
+* **the original array is not copied in memory**.
+* **When modifying the view, the original array is modified as well**:
+
+.. sourcecode:: python
+
+    >>> a = np.arange(10)
+    >>> a
+    array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+    >>> b = a[::2]; b
+    array([0, 2, 4, 6, 8])
+    >>> b[0] = 12
+    >>> b
+    array([12,  2,  4,  6,  8])
+    >>> a   # no copy !!!
+    array([12,  1,  2,  3,  4,  5,  6,  7,  8,  9])
+
+-----
+
+Numpy : Copies and views
+--------------------------------------------------------------------------------
+
+If you want a copy you have to specify it:
+
+.. sourcecode:: python
+
+    >>> a = np.arange(10)
+    >>> b = a[::2].copy()  # force a copy
+    >>> b[0] = 12
+    >>> a
+    array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+
+This behavior can be surprising at first sight...
+
+but it allows to **save both memory and time**.
+
+-----
+
+Numpy: file formats
+--------------------------------------------------------------------------------
+
+Numpy has its own format:
+
+.. sourcecode:: python
+
+    >>> np.save('pop.npy', data)
+    >>> data3 = np.load('pop.npy')
+
+But supports well-known (& more obscure) file formats:
+
+* Matlab: ``scipy.io.loadmat``, ``scipy.io.savemat``
+* HDF5: `h5py <http://code.google.com/p/h5py/>`__, `PyTables <http://pytables.org>`__
+* NetCDF: ``scipy.io.netcdf_file``, `netcdf4-python <http://code.google.com/p/netcdf4-python/>`__, ...
+* MatrixMarket: ``scipy.io.mmread``, ``scipy.io.mmread``
+
+
+-----
+
+Numpy : linear algebra
+--------------------------------------------------------------------------------
+
+Matrix multiplication:
+
+.. sourcecode:: python
+
+    >>> a = np.triu(np.ones((3, 3)), 1)   # see help(np.triu)
+    >>> a
+    array([[ 0.,  1.,  1.],
+           [ 0.,  0.,  1.],
+           [ 0.,  0.,  0.]])
+    >>> b = np.diag([1, 2, 3])
+    >>> a.dot(b)
+    array([[ 0.,  2.,  3.],
+           [ 0.,  0.,  3.],
+           [ 0.,  0.,  0.]])
+    >>> np.dot(a, a)
+    array([[0, 0, 1],
+           [0, 0, 0],
+           [0, 0, 0]])
+
+Transpose:
+
+.. sourcecode:: python
+
+    >>> a_transposed = a.T  # no copy !
+
+-----
+
+Numpy : linear algebra
+--------------------------------------------------------------------------------
+
+Inverses and linear equation systems:
+
+.. sourcecode:: python
+
+    >>> from numpy import linalg  # OR
+    >>> from scipy import linalg  # even better
+    >>> A = a + b
+    >>> A
+    array([[ 1.,  1.,  1.],
+           [ 0.,  2.,  1.],
+           [ 0.,  0.,  3.]])
+    >>> B = linalg.inv(A)
+    >>> B.dot(A)
+    array([[ 1.,  0.,  0.],
+           [ 0.,  1.,  0.],
+           [ 0.,  0.,  1.]])
+    >>> x = linalg.solve(A, [1, 2, 3])  # linear system
+    >>> U, s, V = linalg.svd(A)  # SVD
+    >>> vals = np.linalg.eigvals(A)  # Eigenvalues
+
+
+-----
+
+Numpy : reductions
+--------------------------------------------------------------------------------
+
+Computing sums:
+
+.. sourcecode:: python
+
+    >>> x = np.array([1, 2, 3, 4])
+    >>> np.sum(x)  # or x.sum()
+    10
+
+Sum by rows and by columns:
+
+.. sourcecode:: python
+
+    >>> x = np.array([[1, 1], [2, 2]])
+    >>> x.sum(axis=0)   # columns (first dimension)
+    array([3, 3])
+    >>> x[:,0].sum(), x[:,1].sum()
+    (3, 3)
+    >>> x.sum(axis=1)   # rows (second dimension)
+    array([2, 4])
+
+Same with ``np.mean, np.argmax, np.argmin, np.min, np.max, np.cumsum, np.sort`` etc.
+
+-----
+
 Visualization with Python
 --------------------------------------------------------------------------------
 
@@ -611,19 +792,158 @@ Check out: http://pysurfer.github.com/
 My first script
 --------------------------------------------------------------------------------
 
+Let's say the file ``my_script.py`` contains:
+
+.. sourcecode:: python
+
+    s = 'hello world!'
+    print s
+
+In IPython:
+
 .. sourcecode:: ipython
 
-    In [3]: %run my_script.py
-    Hello word
+    In [1]: %run my_script.py
+    Hello world!
 
-    In [4]: s
-    Out[4]: 'Hello word'
+    In [2]: s
+    Out[2]: 'Hello world!'
 
-    In [5]: %whos
+    In [3]: %whos
     Variable   Type    Data/Info
     ----------------------------
-    s          str     Hello word
+    s          str     Hello world!
 
+-----
+
+Scipy
+--------------------------------------------------------------------------------
+
+* ``scipy`` contains various toolboxes dedicated to common issues in
+  scientific computing.
+
+* ``scipy`` can be compared to other standard scientific-computing
+  libraries, such as the GSL (GNU Scientific  Library for C and C++),
+  or Matlab's toolboxes.
+
+* ``scipy`` is the core package for scientific
+  routines in Python
+
+* ``scipy`` it is meant to operate efficiently on ``numpy`` arrays.
+
+-----
+
+Scipy
+--------------------------------------------------------------------------------
+
+* ``scipy.io``  for IO (e.g. read / write Matlab files)
+* ``scipy.linalg``  for optimized linear algebra
+* ``scipy.stats``  for basic stats (t-tests, simple anova, ranksum etc.)
+* ``scipy.signal``  for signal processing
+* ``scipy.sparse``  for sparse matrices
+* ``scipy.fftpack``  for FFTs
+* ``scipy.ndimage``  for N-D image processing (e.g., smoothing)
+* etc.
+
+-----
+
+Scipy: example of ``scipy.io``
+--------------------------------------------------------------------------------
+
+* Loading and saving Matlab files:
+
+    >>> from scipy import io
+    >>> struct = io.loadmat('file.mat', struct_as_record=True)
+    >>> io.savemat('file.mat', struct)
+
+-----
+
+Scipy: example of ``scipy.stats``
+--------------------------------------------------------------------------------
+
+A T-test to decide whether the two sets of observations have different means:
+
+.. sourcecode:: ipython
+
+    >>> a = np.random.normal(0, 1, size=100)
+    >>> b = np.random.normal(1, 1, size=10)
+    >>> stats.ttest_ind(a, b)
+    (-2.389876434401887, 0.018586471712806949)
+
+The resulting output is composed of:
+
+    * The T statistic value
+
+    * the *p value*
+
+-----
+
+Basics of control flow
+--------------------------------------------------------------------------------
+
+* if/elif/else
+
+.. sourcecode:: python
+
+    >>> a = 10
+    >>> if a == 1:
+    >>>     print(1)
+    >>> elif a == 2:
+    >>>     print(2)
+    >>> else:
+    >>>     print('A lot')
+
+**Blocks are delimited by indentation**
+
+-----
+
+Basics of control flow
+--------------------------------------------------------------------------------
+
+* for loops
+
+.. sourcecode:: python
+
+    >>> for word in ['cool', 'powerful', 'readable']:
+    >>>     print('Python is %s' % word)
+    >>>
+    Python is cool
+    Python is powerful
+    Python is readable
+
+**you can iterate or lists, arrays, dict etc.**
+
+-----
+
+My first function
+--------------------------------------------------------------------------------
+
+Functions start with **def**:
+
+.. sourcecode:: python
+
+    >>> def disk_area(radius):
+    >>>     return 3.14 * radius * radius
+    >>>
+    >>> disk_area(1.5)
+    7.0649999999999995
+
+-----
+
+My second function
+--------------------------------------------------------------------------------
+
+**Arguments are not copied** when passed to a function (not like with Matlab)
+
+.. sourcecode:: python
+
+    >>> def foo(a):
+    >>>     a.append(1)
+    >>> 
+    >>> a = [0]
+    >>> foo(a)
+    >>> print a  # a has been modified !!!
+    [0, 1]
 
 -----
 
@@ -650,6 +970,23 @@ Then start the python interpreter with:
 .. sourcecode:: bash
 
     $ ipython -pylab
+
+-----
+
+Learn more
+--------------------------------------------------------------------------------
+
+On the language
+
+- List Comprehensions
+- Classes and objects with methods
+
+On Numpy:
+
+- Broadcasting similar to ``bsxfun`` in Matlab.
+- Fancy indexing
+- Fortran or C ordered arrays
+
 
 -----
 
