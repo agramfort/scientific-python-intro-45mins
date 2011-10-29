@@ -982,7 +982,6 @@ On Numpy:
 - Fancy indexing
 - Fortran or C ordered arrays
 
-
 -----
 
 Learn more
@@ -991,14 +990,12 @@ Learn more
 - http://scipy-lectures.github.com
 - http://www.scipy.org/NumPy_for_Matlab_Users
 
-For a Matlab like IDE environment
-
-- http://packages.python.org/spyder
-
 More:
 
+- Matlab like IDE environment: http://packages.python.org/spyder
 - Parallel computing: http://packages.python.org/joblib
 - Code testing with nosetests
+- Cython: write Python get C code http://cython.org
 
 MEG and EEG data analysis:
 
