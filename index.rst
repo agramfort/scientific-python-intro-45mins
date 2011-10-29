@@ -14,15 +14,14 @@ What you should be able to do
 ... in 45mins
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- start Python
-- do simple math
-- basic scripting
-- get started with linear algebra and scientific computing
-- plotting
+- Start Python
+- Do simple math
+- Get started with linear algebra and scientific computing
+- Plot some nice figures
 
 ----
 
-What use Python for?
+Use Python for what?
 --------------------------------------------------------------------------------
 
 - scripting (like shell scripts e.g. bash, csh)
@@ -224,15 +223,17 @@ Container types: list
 
 Note that i is in ``l[start:stop]`` if ``start <= i < stop``
 
+So that ``len(l[start:stop]) == (stop - start)``
+
 **Slicing syntax**: `l[start:stop:stride]`
 
 .. sourcecode:: python
 
-    >>> l[:3]  # first 3
+    >>> l[:3]  # first 3 : in Matlab l(1:3)
     [1, 2, 3]
-    >>> l[3:]  # from 3 to end
+    >>> l[3:]  # from 3 to end : in Matlab l(4:end)
     [4, 5]
-    >>> l[::2]
+    >>> l[::2]  # every 2 element : in Matlab l(1:2:end)
     [1, 3, 5]
 
 ----
@@ -321,25 +322,19 @@ values**. It is an **unordered** container:
 Getting help
 --------------------------------------------------------------------------------
 
-Start `ipython`:
+Start IPython:
 
 .. sourcecode:: python
 
-    >>> print('Hello world')
-    Hello world
-    >>> print?  # don't forget the ?
-    Type:		builtin_function_or_method
-    Base Class:	        <type 'builtin_function_or_method'>
-    String Form:	<built-in function print>
-    Namespace:	        Python builtin
+    >>> l = list()
+    >>> l.sort?  # don't forget the ?
+    Type:       builtin_function_or_method
+    Base Class: <type 'builtin_function_or_method'>
+    String Form:<built-in method sort of list object at 0x660ef30>
+    Namespace:  Interactive
     Docstring:
-	print(value, ..., sep=' ', end='\n', file=sys.stdout)
-
-	Prints the values to a stream, or to sys.stdout by default.
-	Optional keyword arguments:
-	file: a file-like object (stream); defaults to the current sys.stdout.
-	sep:  string inserted between values, default a space.
-	end:  string appended after the last value, default a newline.
+    L.sort(cmp=None, key=None, reverse=False) -- stable sort *IN PLACE*;
+    cmp(x, y) -> -1, 0, 1
 
 
 -----
@@ -558,7 +553,7 @@ Numpy : Indexing and slicing
 Numpy : Indexing and slicing
 --------------------------------------------------------------------------------
 
-Like Python lists arrays can be sliced:
+Like Python lists **arrays can be sliced**:
 
 .. sourcecode:: python
 
@@ -666,7 +661,7 @@ Transpose:
 Numpy : linear algebra
 --------------------------------------------------------------------------------
 
-Inverses and linear equation systems:
+Inverse, linear equation systems and SVD:
 
 .. sourcecode:: python
 
@@ -803,7 +798,7 @@ In IPython:
 
 .. sourcecode:: ipython
 
-    In [1]: %run my_script.py
+    In [1]: %run my_script.py  # in Matlab just `my_script`
     Hello world!
 
     In [2]: s
@@ -978,7 +973,7 @@ Learn more
 
 On the language
 
-- List Comprehensions
+- List comprehensions
 - Classes and objects with methods
 
 On Numpy:
@@ -1000,9 +995,10 @@ For a Matlab like IDE environment
 
 - http://packages.python.org/spyder
 
-Parallel computing:
+More:
 
-- http://packages.python.org/joblib
+- Parallel computing: http://packages.python.org/joblib
+- Code testing with nosetests
 
 MEG and EEG data analysis:
 

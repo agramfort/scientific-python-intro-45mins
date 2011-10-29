@@ -1283,11 +1283,10 @@ pre.highlight {
 	    <div class="h3"></div>
             <section><h3>... in 45mins</h3>
 <ul class="simple">
-<li>start Python</li>
-<li>do simple math</li>
-<li>basic scripting</li>
-<li>get started with linear algebra and scientific computing</li>
-<li>plotting</li>
+<li>Start Python</li>
+<li>Do simple math</li>
+<li>Get started with linear algebra and scientific computing</li>
+<li>Plot some nice figures</li>
 </ul></section>
             
           </div>
@@ -1315,7 +1314,7 @@ pre.highlight {
         <div class="slide">
           <div class="inner">
             
-            <header><h2>What use Python for?</h2></header>
+            <header><h2>Use Python for what?</h2></header>
             
             
 
@@ -1671,12 +1670,13 @@ Optimization, regression, interpolation, etc: <a class="reference external" href
 <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
 </pre>
 <p>Note that i is in <tt class="docutils literal">l[start:stop]</tt> if <tt class="docutils literal">start &lt;= i &lt; stop</tt></p>
+<p>So that <tt class="docutils literal">len(l[start:stop]) == (stop - start)</tt></p>
 <p><strong>Slicing syntax</strong>: <cite>l[start:stop:stride]</cite></p>
-<pre><span class="o">&gt;&gt;&gt;</span> <span class="n">l</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>  <span class="c"># first 3</span>
+<pre><span class="o">&gt;&gt;&gt;</span> <span class="n">l</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>  <span class="c"># first 3 : in Matlab l(1:3)</span>
 <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">l</span><span class="p">[</span><span class="mi">3</span><span class="p">:]</span>  <span class="c"># from 3 to end</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">l</span><span class="p">[</span><span class="mi">3</span><span class="p">:]</span>  <span class="c"># from 3 to end : in Matlab l(4:end)</span>
 <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">l</span><span class="p">[::</span><span class="mi">2</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">l</span><span class="p">[::</span><span class="mi">2</span><span class="p">]</span>  <span class="c"># every 2 element : in Matlab l(1:2:end)</span>
 <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
 </pre></section>
             
@@ -1850,22 +1850,16 @@ values</strong>. It is an <strong>unordered</strong> container:</p>
             
 
 	    <div class="h3"></div>
-            <section><p>Start <cite>ipython</cite>:</p>
-<pre><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="s">&#39;Hello world&#39;</span><span class="p">)</span>
-<span class="n">Hello</span> <span class="n">world</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="err">?</span>  <span class="c"># don&#39;t forget the ?</span>
-<span class="n">Type</span><span class="p">:</span>               <span class="n">builtin_function_or_method</span>
-<span class="n">Base</span> <span class="n">Class</span><span class="p">:</span>         <span class="o">&lt;</span><span class="nb">type</span> <span class="s">&#39;builtin_function_or_method&#39;</span><span class="o">&gt;</span>
-<span class="n">String</span> <span class="n">Form</span><span class="p">:</span>        <span class="o">&lt;</span><span class="n">built</span><span class="o">-</span><span class="ow">in</span> <span class="n">function</span> <span class="k">print</span><span class="o">&gt;</span>
-<span class="n">Namespace</span><span class="p">:</span>          <span class="n">Python</span> <span class="n">builtin</span>
+            <section><p>Start IPython:</p>
+<pre><span class="o">&gt;&gt;&gt;</span> <span class="n">l</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">l</span><span class="o">.</span><span class="n">sort</span><span class="err">?</span>  <span class="c"># don&#39;t forget the ?</span>
+<span class="n">Type</span><span class="p">:</span>       <span class="n">builtin_function_or_method</span>
+<span class="n">Base</span> <span class="n">Class</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">type</span> <span class="s">&#39;builtin_function_or_method&#39;</span><span class="o">&gt;</span>
+<span class="n">String</span> <span class="n">Form</span><span class="p">:</span><span class="o">&lt;</span><span class="n">built</span><span class="o">-</span><span class="ow">in</span> <span class="n">method</span> <span class="n">sort</span> <span class="n">of</span> <span class="nb">list</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x660ef30</span><span class="o">&gt;</span>
+<span class="n">Namespace</span><span class="p">:</span>  <span class="n">Interactive</span>
 <span class="n">Docstring</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s">&#39; &#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">,</span> <span class="nb">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">)</span>
-
-    <span class="n">Prints</span> <span class="n">the</span> <span class="n">values</span> <span class="n">to</span> <span class="n">a</span> <span class="n">stream</span><span class="p">,</span> <span class="ow">or</span> <span class="n">to</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span> <span class="n">by</span> <span class="n">default</span><span class="o">.</span>
-    <span class="n">Optional</span> <span class="n">keyword</span> <span class="n">arguments</span><span class="p">:</span>
-    <span class="nb">file</span><span class="p">:</span> <span class="n">a</span> <span class="nb">file</span><span class="o">-</span><span class="n">like</span> <span class="nb">object</span> <span class="p">(</span><span class="n">stream</span><span class="p">);</span> <span class="n">defaults</span> <span class="n">to</span> <span class="n">the</span> <span class="n">current</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span>
-    <span class="n">sep</span><span class="p">:</span>  <span class="n">string</span> <span class="n">inserted</span> <span class="n">between</span> <span class="n">values</span><span class="p">,</span> <span class="n">default</span> <span class="n">a</span> <span class="n">space</span><span class="o">.</span>
-    <span class="n">end</span><span class="p">:</span>  <span class="n">string</span> <span class="n">appended</span> <span class="n">after</span> <span class="n">the</span> <span class="n">last</span> <span class="n">value</span><span class="p">,</span> <span class="n">default</span> <span class="n">a</span> <span class="n">newline</span><span class="o">.</span>
+<span class="n">L</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="nb">cmp</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span> <span class="o">--</span> <span class="n">stable</span> <span class="n">sort</span> <span class="o">*</span><span class="n">IN</span> <span class="n">PLACE</span><span class="o">*</span><span class="p">;</span>
+<span class="nb">cmp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
 </pre></section>
             
           </div>
@@ -2283,7 +2277,7 @@ values</strong>. It is an <strong>unordered</strong> container:</p>
             
 
 	    <div class="h3"></div>
-            <section><p>Like Python lists arrays can be sliced:</p>
+            <section><p>Like Python lists <strong>arrays can be sliced</strong>:</p>
 <pre><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">a</span>
 <span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
@@ -2502,7 +2496,7 @@ values</strong>. It is an <strong>unordered</strong> container:</p>
             
 
 	    <div class="h3"></div>
-            <section><p>Inverses and linear equation systems:</p>
+            <section><p>Inverse, linear equation systems and SVD:</p>
 <pre><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">linalg</span>  <span class="c"># OR</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">linalg</span>  <span class="c"># even better</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">A</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
@@ -2721,7 +2715,7 @@ values</strong>. It is an <strong>unordered</strong> container:</p>
 <span class="k">print</span> <span class="n">s</span>
 </pre>
 <p>In IPython:</p>
-<pre>In [1]: %run my_script.py
+<pre>In [1]: %run my_script.py  # in Matlab just `my_script`
 Hello world!
 
 In [2]: s
@@ -3137,7 +3131,7 @@ routines in Python</li>
 	    <div class="h3"></div>
             <section><p>On the language</p>
 <ul class="simple">
-<li>List Comprehensions</li>
+<li>List comprehensions</li>
 <li>Classes and objects with methods</li>
 </ul>
 <p>On Numpy:</p>
@@ -3185,9 +3179,10 @@ routines in Python</li>
 <ul class="simple">
 <li><a class="reference external" href="http://packages.python.org/spyder">http://packages.python.org/spyder</a></li>
 </ul>
-<p>Parallel computing:</p>
+<p>More:</p>
 <ul class="simple">
-<li><a class="reference external" href="http://packages.python.org/joblib">http://packages.python.org/joblib</a></li>
+<li>Parallel computing: <a class="reference external" href="http://packages.python.org/joblib">http://packages.python.org/joblib</a></li>
+<li>Code testing with nosetests</li>
 </ul>
 <p>MEG and EEG data analysis:</p>
 <ul class="simple">
@@ -3240,7 +3235,7 @@ routines in Python</li>
         </tr>
         
         <tr id="toc-row-4" class="sub">
-          <th><a href="#slide4">What use Python for?</a></th>
+          <th><a href="#slide4">Use Python for what?</a></th>
           <td><a href="#slide4">4</a></td>
         </tr>
         
