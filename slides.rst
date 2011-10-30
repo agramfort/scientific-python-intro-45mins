@@ -180,6 +180,35 @@ Python can replace your pocket calculator with : ``+``, ``-``, ``*``, ``/``, ``%
 
 ----
 
+Strings
+--------------------------------------------------------------------------------
+
+.. sourcecode:: python
+
+    >>> a = "hello, world!"
+    >>> print a[2]
+    'l'
+    >>> a.replace('l', 'z', 1)
+    'hezlo, world!'
+    >>> a.replace('l', 'z')
+    'hezzo, worzd!'
+
+* String substitution:
+
+.. sourcecode:: python
+
+    >>> 'An integer: %i; a float: %f; a string: %s' % (1, 0.1, 'string')
+    'An integer: 1; a float: 0.100000; another string: string'
+
+Behaves very much like printf in C
+
+.. sourcecode:: python
+
+    >>> print "%03d" % 2  # print fixed size
+    "002"
+
+----
+
 Container types: list
 --------------------------------------------------------------------------------
 
@@ -265,36 +294,7 @@ That's all you need to know today.
 
 ----
 
-Container types: string or ``str``
---------------------------------------------------------------------------------
-
-.. sourcecode:: python
-
-    >>> a = "hello, world!"
-    >>> print a[2]
-    'l'
-    >>> a.replace('l', 'z', 1)
-    'hezlo, world!'
-    >>> a.replace('l', 'z')
-    'hezzo, worzd!'
-
-* String substitution:
-
-.. sourcecode:: python
-
-    >>> 'An integer: %i; a float: %f; a string: %s' % (1, 0.1, 'string')
-    'An integer: 1; a float: 0.100000; another string: string'
-
-Behaves very much like printf in C
-
-.. sourcecode:: python
-
-    >>> print "%03d" % 2  # print fixed size
-    "002"
-
-----
-
-Python basics: data types
+Container types: dictionary
 --------------------------------------------------------------------------------
 
 A dictionary ``dict`` is basically an efficient table that **maps keys to
