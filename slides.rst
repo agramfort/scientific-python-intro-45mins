@@ -538,7 +538,7 @@ Numpy : Indexing and slicing
 
 .. sourcecode:: python
 
-    >>> a = np.diag(np.arange(5))
+    >>> a = np.diag(np.arange(3))
     >>> a
     array([[0, 0, 0],
            [0, 1, 0],
@@ -550,8 +550,8 @@ Numpy : Indexing and slicing
     array([[ 0,  0,  0],
            [ 0,  1,  0],
            [ 0, 10,  2]])
-    >>> a[1]  # takes the entire 2 second row !
-    array([0, 1, 0, 0, 0])
+    >>> a[1]  # takes the entire second row !
+    array([0, 1, 0])
 
 -----
 
@@ -666,7 +666,7 @@ Transpose:
 Numpy : linear algebra
 --------------------------------------------------------------------------------
 
-Inverses and linear equation systems:
+Inverses and systems of linear equations:
 
 .. sourcecode:: python
 
@@ -684,7 +684,7 @@ Inverses and linear equation systems:
            [ 0.,  0.,  1.]])
     >>> x = linalg.solve(A, [1, 2, 3])  # linear system
     >>> U, s, V = linalg.svd(A)  # SVD
-    >>> vals = np.linalg.eigvals(A)  # Eigenvalues
+    >>> vals = linalg.eigvals(A)  # Eigenvalues
 
 
 -----
@@ -827,9 +827,9 @@ Scipy
   or Matlab's toolboxes.
 
 * ``scipy`` is the core package for scientific
-  routines in Python
+  routines in Python.
 
-* ``scipy`` it is meant to operate efficiently on ``numpy`` arrays.
+* ``scipy`` is meant to operate efficiently on ``numpy`` arrays.
 
 -----
 
