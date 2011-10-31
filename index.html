@@ -1610,6 +1610,55 @@ Optimization, regression, interpolation, etc: <a class="reference external" href
         <div class="slide">
           <div class="inner">
             
+            <header><h2>Strings</h2></header>
+            
+            
+
+	    <div class="h3"></div>
+            <section><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="s">&quot;hello, world!&quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="s">&#39;l&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;l&#39;</span><span class="p">,</span> <span class="s">&#39;z&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="s">&#39;hezlo, world!&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;l&#39;</span><span class="p">,</span> <span class="s">&#39;z&#39;</span><span class="p">)</span>
+<span class="s">&#39;hezzo, worzd!&#39;</span>
+</pre>
+<ul class="simple">
+<li>String substitution:</li>
+</ul>
+<pre><span class="o">&gt;&gt;&gt;</span> <span class="s">&#39;An integer: </span><span class="si">%i</span><span class="s">; a float: </span><span class="si">%f</span><span class="s">; a string: </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="s">&#39;string&#39;</span><span class="p">)</span>
+<span class="s">&#39;An integer: 1; a float: 0.100000; another string: string&#39;</span>
+</pre>
+<p>Behaves very much like printf in C</p>
+<pre><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="s">&quot;</span><span class="si">%03d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="mi">2</span>  <span class="c"># print fixed size</span>
+<span class="s">&quot;002&quot;</span>
+</pre></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="index.rst">index.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              11/46
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: index.rst -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
             <header><h2>Container types: list</h2></header>
             
             
@@ -1646,7 +1695,7 @@ Optimization, regression, interpolation, etc: <a class="reference external" href
             </aside>
             
             <aside class="page_number">
-              11/46
+              12/46
             </aside>
           </footer>
         </div>
@@ -1694,7 +1743,7 @@ Optimization, regression, interpolation, etc: <a class="reference external" href
             </aside>
             
             <aside class="page_number">
-              12/46
+              13/46
             </aside>
           </footer>
         </div>
@@ -1739,55 +1788,6 @@ using the notation <strong>.</strong></p>
             </aside>
             
             <aside class="page_number">
-              13/46
-            </aside>
-          </footer>
-        </div>
-      </div>
-      
-      <!-- slide source: index.rst -->
-      <div class="slide-wrapper">
-        <div class="slide">
-          <div class="inner">
-            
-            <header><h2>Container types: string or <tt class="docutils literal">str</tt></h2></header>
-            
-            
-
-	    <div class="h3"></div>
-            <section><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="s">&quot;hello, world!&quot;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
-<span class="s">&#39;l&#39;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;l&#39;</span><span class="p">,</span> <span class="s">&#39;z&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="s">&#39;hezlo, world!&#39;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;l&#39;</span><span class="p">,</span> <span class="s">&#39;z&#39;</span><span class="p">)</span>
-<span class="s">&#39;hezzo, worzd!&#39;</span>
-</pre>
-<ul class="simple">
-<li>String substitution:</li>
-</ul>
-<pre><span class="o">&gt;&gt;&gt;</span> <span class="s">&#39;An integer: </span><span class="si">%i</span><span class="s">; a float: </span><span class="si">%f</span><span class="s">; a string: </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="s">&#39;string&#39;</span><span class="p">)</span>
-<span class="s">&#39;An integer: 1; a float: 0.100000; another string: string&#39;</span>
-</pre>
-<p>Behaves very much like printf in C</p>
-<pre><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="s">&quot;</span><span class="si">%03d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="mi">2</span>  <span class="c"># print fixed size</span>
-<span class="s">&quot;002&quot;</span>
-</pre></section>
-            
-          </div>
-          <div class="presenter_notes">
-            <header><h1>Presenter Notes</h1></header>
-            <section>
-            
-            </section>
-          </div>
-          <footer>
-            
-            <aside class="source">
-              Source: <a href="index.rst">index.rst</a>
-            </aside>
-            
-            <aside class="page_number">
               14/46
             </aside>
           </footer>
@@ -1799,7 +1799,7 @@ using the notation <strong>.</strong></p>
         <div class="slide">
           <div class="inner">
             
-            <header><h2>Python basics: data types</h2></header>
+            <header><h2>Container types: dictionary</h2></header>
             
             
 
@@ -2231,7 +2231,7 @@ values</strong>. It is an <strong>unordered</strong> container:</p>
             
 
 	    <div class="h3"></div>
-            <section><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+            <section><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">a</span>
 <span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
        <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
@@ -2243,8 +2243,8 @@ values</strong>. It is an <strong>unordered</strong> container:</p>
 <span class="n">array</span><span class="p">([[</span> <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">],</span>
        <span class="p">[</span> <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">],</span>
        <span class="p">[</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span>  <span class="mi">2</span><span class="p">]])</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="c"># takes the entire 2 second row !</span>
-<span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="c"># takes the entire second row !</span>
+<span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
 </pre></section>
             
           </div>
@@ -2496,7 +2496,7 @@ values</strong>. It is an <strong>unordered</strong> container:</p>
             
 
 	    <div class="h3"></div>
-            <section><p>Inverse, linear equation systems and SVD:</p>
+            <section><p>Inverse, systems of linear equations and SVD:</p>
 <pre><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">linalg</span>  <span class="c"># OR</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">linalg</span>  <span class="c"># even better</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">A</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
@@ -2511,7 +2511,7 @@ values</strong>. It is an <strong>unordered</strong> container:</p>
        <span class="p">[</span> <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">]])</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>  <span class="c"># linear system</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">U</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>  <span class="c"># SVD</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eigvals</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>  <span class="c"># Eigenvalues</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">vals</span> <span class="o">=</span> <span class="n">linalg</span><span class="o">.</span><span class="n">eigvals</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>  <span class="c"># Eigenvalues</span>
 </pre></section>
             
           </div>
@@ -2764,8 +2764,8 @@ scientific computing.</li>
 libraries, such as the GSL (GNU Scientific  Library for C and C++),
 or Matlab's toolboxes.</li>
 <li><tt class="docutils literal">scipy</tt> is the core package for scientific
-routines in Python</li>
-<li><tt class="docutils literal">scipy</tt> it is meant to operate efficiently on <tt class="docutils literal">numpy</tt> arrays.</li>
+routines in Python.</li>
+<li><tt class="docutils literal">scipy</tt> is meant to operate efficiently on <tt class="docutils literal">numpy</tt> arrays.</li>
 </ul></section>
             
           </div>
@@ -3268,7 +3268,7 @@ routines in Python</li>
         </tr>
         
         <tr id="toc-row-11" class="sub">
-          <th><a href="#slide11">Container types: list</a></th>
+          <th><a href="#slide11">Strings</a></th>
           <td><a href="#slide11">11</a></td>
         </tr>
         
@@ -3283,12 +3283,12 @@ routines in Python</li>
         </tr>
         
         <tr id="toc-row-14" class="sub">
-          <th><a href="#slide14">Container types: string or <tt class="docutils literal">str</tt></a></th>
+          <th><a href="#slide14">Container types: list</a></th>
           <td><a href="#slide14">14</a></td>
         </tr>
         
         <tr id="toc-row-15" class="sub">
-          <th><a href="#slide15">Python basics: data types</a></th>
+          <th><a href="#slide15">Container types: dictionary</a></th>
           <td><a href="#slide15">15</a></td>
         </tr>
         
