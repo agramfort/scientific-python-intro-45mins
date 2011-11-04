@@ -8,6 +8,20 @@ Intro to scientific Python in 45'
 
 ----
 
+Getting help at the center
+--------------------------------------------------------------------------------
+
+Ask your questions on the martinos-python mailing list:
+
+martinos-python@nmr.mgh.harvard.edu
+
+you can at subscribe:
+
+https://mail.nmr.mgh.harvard.edu/mailman/listinfo/martinos-python
+
+
+----
+
 What you should be able to do
 --------------------------------------------------------------------------------
 
@@ -97,6 +111,28 @@ Once you have started the interpreter, type:
 
     >>> print "Hello, world!"
     Hello, world!
+
+----
+
+If you are scared of the terminal
+--------------------------------------------------------------------------------
+
+You can use Spyder
+
+.. sourcecode:: bash
+
+    $ spyder
+
+.. raw:: html
+
+  <span class="pylab_demo">
+
+.. image:: images/spyder_screenshot.png
+  :scale: 40%
+
+.. raw:: html
+
+  </span>
 
 ----
 
@@ -427,7 +463,7 @@ Numpy: Creating arrays
     >>> a = np.arange(10) # 0 .. n-1  (!)
     >>> a
     array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
-    >>> b = np.arange(1, 9, 2) # start, end (exlusive), step
+    >>> b = np.arange(1, 9, 2) # start, end (exlusive), step ([1:2:8] in Matlab)
     >>> b
     array([1, 3, 5, 7])
 
@@ -571,8 +607,6 @@ Numpy : Copies and views
 --------------------------------------------------------------------------------
 
 * A slicing operation creates a **view** on the original array
-* **the original array is not copied in memory**.
-* **When modifying the view, the original array is modified as well**:
 
 .. sourcecode:: python
 
@@ -581,6 +615,11 @@ Numpy : Copies and views
     array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
     >>> b = a[::2]; b
     array([0, 2, 4, 6, 8])
+
+* **The original array is not copied in memory: when modifying the view, the original array is modified as well.**
+
+.. sourcecode:: python
+
     >>> b[0] = 12
     >>> b
     array([12,  2,  4,  6,  8])
@@ -984,7 +1023,7 @@ On Numpy:
 
 -----
 
-Learn more
+Learn even more
 --------------------------------------------------------------------------------
 
 - http://scipy-lectures.github.com
@@ -997,6 +1036,19 @@ More:
 - Code testing with nosetests
 - Cython: write Python get C code http://cython.org
 
-MEG and EEG data analysis:
+-----
 
-- http://martinos.org/mne
+Python for brain imaging
+--------------------------------------------------------------------------------
+
+- http://nipy.sourceforge.net/nibabel (for IO)
+- http://nipy.sourceforge.net/nipype (Pipeline for SPM, FSL, FreeSurfer)
+- http://pysurfer.github.com (like TkSurfer)
+- http://martinos.org/mne (MEG and EEG data analysis)
+- http://nisl.github.com (MVPA example with fMRI)
+- http://scikit-learn.org (Machine Learning / Stats)
+- http://www.pymvpa.org
+- http://www.nipy.org
+- etc.
+
+Really active community !
