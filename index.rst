@@ -48,7 +48,7 @@ Scientific Python building blocks
 First step
 --------------------------------------------------------------------------------
 
-Start the **Ipython** shell (from terminal or Windows cmd shell):
+Start the **IPython** shell (from terminal or Windows cmd shell):
 
 .. sourcecode:: bash
 
@@ -211,7 +211,7 @@ Strings
 .. sourcecode:: python
 
     >>> 'An integer: %i; a float: %f; a string: %s' % (1, 0.1, 'string')
-    'An integer: 1; a float: 0.100000; another string: string'
+    'An integer: 1; a float: 0.100000; a string: string'
 
 Behaves very much like printf in C
 
