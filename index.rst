@@ -1,31 +1,13 @@
-Intro to scientific Python in 45'
+Intro to scientific Python in 30'
 ================================================================================
 
 ----
 
-... or Python for Matlab Users
-================================================================================
-
-----
-
-Getting help at the center
---------------------------------------------------------------------------------
-
-Ask your questions on the martinos-python mailing list:
-
-martinos-python@nmr.mgh.harvard.edu
-
-you can at subscribe:
-
-https://mail.nmr.mgh.harvard.edu/mailman/listinfo/martinos-python
-
-
-----
 
 What you should be able to do
 --------------------------------------------------------------------------------
 
-... in 45mins
+... in 30mins
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - Start Python
@@ -50,21 +32,16 @@ You just need to know 1 language to do almost everything !
 Scientific Python building blocks
 -----------------------------------
 
-* **Python**, a generic and modern computing language
+* **IPython**: an advanced **Python shell**
 
-* **IPython**, an advanced **Python shell**: http://ipython.org/
+* **Numpy**: provides **numerical arrays** objects
 
-* **Numpy** : provides powerful **numerical arrays** objects, and routines to
-  manipulate them: http://www.numpy.org/
-
-* **Scipy** : high-level data processing routines.
-  Optimization, regression, interpolation, etc: http://www.scipy.org/
+* **Scipy**: scientific computing
+  (Optimization, regression, interpolation, etc)
 
 * **Matplotlib** a.k.a. Pylab: 2-D visualization, "publication-ready" plots
-  http://matplotlib.sourceforge.net/
 
 * **Mayavi** : 3-D visualization
-  http://code.enthought.com/projects/mayavi/
 
 ----
 
@@ -223,10 +200,11 @@ Strings
     >>> a = "hello, world!"
     >>> print a[2]
     'l'
-    >>> a.replace('l', 'z', 1)
-    'hezlo, world!'
-    >>> a.replace('l', 'z')
-    'hezzo, worzd!'
+
+.. >>> a.replace('l', 'z', 1)
+.. 'hezlo, world!'
+.. >>> a.replace('l', 'z')
+.. 'hezzo, worzd!'
 
 * String substitution:
 
@@ -303,34 +281,6 @@ So that ``len(l[start:stop]) == (stop - start)``
 
 ----
 
-Container types: list
---------------------------------------------------------------------------------
-
-Reverse `l`:
-
-.. sourcecode:: python
-
-    >>> r = l[::-1]
-    >>> r
-    [5, 4, 3, 2, 1]
-
-Sort (in-place):
-
-.. sourcecode:: python
-
-    >>> r.sort()
-    >>> r
-    [1, 2, 3, 4, 5]
-
-
-``r.sort()`` or ``r.append(1)`` are examples of object-oriented programming (OOP).
-Being a ``list``, the object `r` owns the *method* `function` that is called
-using the notation **.**
-
-That's all you need to know today.
-
-----
-
 Container types: dictionary
 --------------------------------------------------------------------------------
 
@@ -339,17 +289,17 @@ values**. It is an **unordered** container:
 
 .. sourcecode:: python
 
-    >>> phone = {'ellen': 5752, 'khaldoun': 5578}
+    >>> phone = {'matti': 5752, 'riitta': 5578}
     >>> phone['alex'] = 5915
     >>> phone
-    {'khaldoun': 5578, 'alex': 5915, 'ellen': 5752}  # no order
-    >>> phone['khaldoun']
+    {'riitta': 5578, 'alex': 5915, 'matti': 5752}  # no order
+    >>> phone['riitta']
     5578
     >>> phone.keys()
-    ['khaldoun', 'alex', 'ellen']
+    ['riitta', 'alex', 'matti']
     >>> phone.values()
     [5578, 5915, 5752]
-    >>> 'ellen' in phone
+    >>> 'matti' in phone
     True
 
 
@@ -393,7 +343,8 @@ Example:
      >>> a
      array([0, 1, 2, 3])
 
-Reference documentation: http://docs.scipy.org
+Reference documentation: http://docs.scipy.org/doc/numpy/reference
+or: http://scipy-lectures.github.com/intro/numpy/numpy.html
 
 
 -----
@@ -413,11 +364,11 @@ Getting the size and dimensions of the array:
 
 .. sourcecode:: python
 
-    >>> a.ndim
+    >>> a.ndim  # in Matlab `ndims(a)`
     1
-    >>> a.shape
+    >>> a.shape  # in Matlab `size(a)`
     (4,)
-    >>> len(a)
+    >>> len(a)  # in Matlab `size(a, 1)`
     4
 
 -----
@@ -435,18 +386,18 @@ Numpy: Creating arrays
            [ 3,  4,  5]])
     >>> b.ndim
     2
-    >>> b.shape
+    >>> b.shape  # in Matlab `size(b)`
     (2, 3)
-    >>> len(b)     # returns the size of the first dimension
+    >>> len(b)  # returns the size of the first dimension. In Matlab `size(b, 1)`
     2
 
 * 3-D, ...
 
-.. sourcecode:: python
-
-    >>> c = np.array([[[1], [2]], [[3], [4]]])
-    >>> c.shape
-    (2, 2, 1)
+.. .. sourcecode:: python
+.. 
+..     >>> c = np.array([[[1], [2]], [[3], [4]]])
+..     >>> c.shape  # in Matlab `size(c)`
+..     (2, 2, 1)
 
 .. In practice, we rarely enter items one by one...
 
@@ -507,62 +458,62 @@ Numpy: Creating arrays
 
 -----
 
-Numpy: Creating arrays
---------------------------------------------------------------------------------
-
-* Random numbers:
-
-.. sourcecode:: python
-
-    >>> a = np.random.rand(4)              # uniform in [0, 1]
-    >>> a
-    array([ 0.58597729,  0.86110455,  0.9401114 ,  0.54264348])
-    >>> b = np.random.randn(4)             # gaussian
-    >>> b
-    array([-2.56844807,  0.06798064, -0.36823781,  0.86966886])
-
-In n-dimensions:
-
-.. sourcecode:: python
-
-    >>> c = np.random.rand(3, 3)
-    >>> c
-    array([[ 0.31976645,  0.64807526,  0.74770801],
-           [ 0.8280203 ,  0.8669403 ,  0.07663683],
-           [ 0.11527489,  0.11494884,  0.13503285]])
-
------
-
-Numpy: Basic data types
---------------------------------------------------------------------------------
-
-.. sourcecode:: python
-
-    >>> a = np.array([1, 2, 3])
-    >>> a.dtype
-    dtype('int64')
-
-has a **different data type** than:
-
-.. sourcecode:: python
-
-    >>> b = np.array([1., 2., 3.])
-    >>> b.dtype
-    dtype('float64')
-
-You can also choose:
-
-.. sourcecode:: python
-
-    >>> c = np.array([1, 2, 3], dtype=float)
-    >>> c.dtype
-    dtype('float64')
-
-**Remark:** Much of the time you don't necessarily need to care, but remember they are there.
-
-.. Remark: There are also other types (e.g. 'complex128', 'bool', etc.)
-
------
+.. Numpy: Creating arrays
+.. --------------------------------------------------------------------------------
+.. 
+.. * Random numbers:
+.. 
+.. .. sourcecode:: python
+.. 
+..     >>> a = np.random.rand(4)              # uniform in [0, 1]
+..     >>> a
+..     array([ 0.58597729,  0.86110455,  0.9401114 ,  0.54264348])
+..     >>> b = np.random.randn(4)             # gaussian
+..     >>> b
+..     array([-2.56844807,  0.06798064, -0.36823781,  0.86966886])
+.. 
+.. In n-dimensions:
+.. 
+.. .. sourcecode:: python
+.. 
+..     >>> c = np.random.rand(3, 3)
+..     >>> c
+..     array([[ 0.31976645,  0.64807526,  0.74770801],
+..            [ 0.8280203 ,  0.8669403 ,  0.07663683],
+..            [ 0.11527489,  0.11494884,  0.13503285]])
+.. 
+.. -----
+.. 
+.. Numpy: Basic data types
+.. --------------------------------------------------------------------------------
+.. 
+.. .. sourcecode:: python
+.. 
+..     >>> a = np.array([1, 2, 3])
+..     >>> a.dtype
+..     dtype('int64')
+.. 
+.. has a **different data type** than:
+.. 
+.. .. sourcecode:: python
+.. 
+..     >>> b = np.array([1., 2., 3.])
+..     >>> b.dtype
+..     dtype('float64')
+.. 
+.. You can also choose:
+.. 
+.. .. sourcecode:: python
+.. 
+..     >>> c = np.array([1, 2, 3], dtype=float)
+..     >>> c.dtype
+..     dtype('float64')
+.. 
+.. **Remark:** Much of the time you don't necessarily need to care, but remember they are there.
+.. 
+.. .. Remark: There are also other types (e.g. 'complex128', 'bool', etc.)
+.. 
+.. -----
 
 Numpy : Indexing and slicing
 --------------------------------------------------------------------------------
@@ -647,25 +598,25 @@ but it allows to **save both memory and time**.
 
 -----
 
-Numpy: file formats
---------------------------------------------------------------------------------
-
-Numpy has its own format:
-
-.. sourcecode:: python
-
-    >>> np.save('pop.npy', data)
-    >>> data3 = np.load('pop.npy')
-
-But supports well-known (& more obscure) file formats:
-
-* Matlab: ``scipy.io.loadmat``, ``scipy.io.savemat``
-* HDF5: `h5py <http://code.google.com/p/h5py/>`__, `PyTables <http://pytables.org>`__
-* NetCDF: ``scipy.io.netcdf_file``, `netcdf4-python <http://code.google.com/p/netcdf4-python/>`__, ...
-* MatrixMarket: ``scipy.io.mmread``, ``scipy.io.mmread``
-
-
------
+.. Numpy: file formats
+.. --------------------------------------------------------------------------------
+.. 
+.. Numpy has its own format:
+.. 
+.. .. sourcecode:: python
+.. 
+..     >>> np.save('pop.npy', data)
+..     >>> data3 = np.load('pop.npy')
+.. 
+.. But supports well-known (& more obscure) file formats:
+.. 
+.. * Matlab: ``scipy.io.loadmat``, ``scipy.io.savemat``
+.. * HDF5: `h5py <http://code.google.com/p/h5py/>`__, `PyTables <http://pytables.org>`__
+.. * NetCDF: ``scipy.io.netcdf_file``, `netcdf4-python <http://code.google.com/p/netcdf4-python/>`__, ...
+.. * MatrixMarket: ``scipy.io.mmread``, ``scipy.io.mmread``
+.. 
+.. 
+.. -----
 
 Numpy : linear algebra
 --------------------------------------------------------------------------------
@@ -850,22 +801,22 @@ In IPython:
 
 -----
 
-Scipy
---------------------------------------------------------------------------------
-
-* ``scipy`` contains various toolboxes dedicated to common issues in
-  scientific computing.
-
-* ``scipy`` can be compared to other standard scientific-computing
-  libraries, such as the GSL (GNU Scientific  Library for C and C++),
-  or Matlab's toolboxes.
-
-* ``scipy`` is the core package for scientific
-  routines in Python.
-
-* ``scipy`` is meant to operate efficiently on ``numpy`` arrays.
-
------
+.. Scipy
+.. --------------------------------------------------------------------------------
+.. 
+.. * ``scipy`` contains various toolboxes dedicated to common issues in
+..   scientific computing.
+.. 
+.. * ``scipy`` can be compared to other standard scientific-computing
+..   libraries, such as the GSL (GNU Scientific  Library for C and C++),
+..   or Matlab's toolboxes.
+.. 
+.. * ``scipy`` is the core package for scientific
+..   routines in Python.
+.. 
+.. * ``scipy`` is meant to operate efficiently on ``numpy`` arrays.
+.. 
+.. -----
 
 Scipy
 --------------------------------------------------------------------------------
@@ -981,55 +932,13 @@ My second function
 
 -----
 
-Getting started at the Martinos
---------------------------------------------------------------------------------
-
-... tomorrow
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-In a terminal do:
-
-.. sourcecode:: tcsh
-
-    $ setenv PATH /usr/pubsw/packages/python/epd/bin:${PATH}
-
-If you use Bash replace the previous instruction with:
-
-.. sourcecode:: bash
-
-    $ export PATH=/usr/pubsw/packages/python/epd/bin:${PATH}
-
-Then start the python interpreter with:
-
-.. sourcecode:: bash
-
-    $ ipython -pylab
-
------
-
 Learn more
---------------------------------------------------------------------------------
-
-On the language
-
-- List comprehensions
-- Classes and objects with methods
-
-On Numpy:
-
-- Broadcasting similar to ``bsxfun`` in Matlab.
-- Fancy indexing
-- Fortran or C ordered arrays
-
------
-
-Learn even more
 --------------------------------------------------------------------------------
 
 - http://scipy-lectures.github.com
 - http://www.scipy.org/NumPy_for_Matlab_Users
 
-More:
+Even more:
 
 - Matlab like IDE environment: http://packages.python.org/spyder
 - Parallel computing: http://packages.python.org/joblib
