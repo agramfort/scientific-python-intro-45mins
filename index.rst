@@ -388,7 +388,7 @@ Numpy: Creating arrays
     2
     >>> b.shape  # in Matlab `size(b)`
     (2, 3)
-    >>> len(b)  # returns the size of the first dimension. In Matlab `size(b, 1)`
+    >>> len(b)  # get size of the first dimension. In Matlab `size(b, 1)`
     2
 
 * 3-D, ...
@@ -414,7 +414,7 @@ Numpy: Creating arrays
     >>> a = np.arange(10) # 0 .. n-1  (!)
     >>> a
     array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
-    >>> b = np.arange(1, 9, 2) # start, end (exlusive), step ([1:2:8] in Matlab)
+    >>> b = np.arange(1, 9, 2) # start, end (exlusive), step
     >>> b
     array([1, 3, 5, 7])
 

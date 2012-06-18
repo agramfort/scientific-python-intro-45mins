@@ -582,7 +582,7 @@ pre.highlight {
 .hll { background-color: #ffffcc }
 .c { color: #408080;
      font-style: italic;
-     font-size: 15px;
+     font-size: 20px;
   } /* Comment */
 .err { border: 1px solid #FF0000 } /* Error */
 .k { color: #008000; font-weight: bold } /* Keyword */
