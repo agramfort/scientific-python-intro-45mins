@@ -1,13 +1,28 @@
-Intro to scientific Python in 30'
+Intro to scientific Python in 45'
 ================================================================================
 
 ----
 
+What is Python and why would I use it?
+-------------------------------------------------------------------------------
+
+- Python is an **intepreted high-level programming language**
+- Python is **free** (as in speech)
+- Python runs on most platforms
+- It **"combines remarkable power with very clear syntax"** [1]_
+- Well suited for **high performance numerical computing** (NumPy, ...)
+- High quality **2D and 3D visualizations** (pylab, mlab, ...)
+- Increasingly **popular in neuroscience** (nipy, nipype, nitime, ...)
+
+
+.. [1] `<http://docs.python.org/faq/general.html#what-is-python/>`_
+
+----
 
 What you should be able to do
 --------------------------------------------------------------------------------
 
-... in 30mins
+... in 45mins
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - Start Python
@@ -20,28 +35,38 @@ What you should be able to do
 Use Python for what?
 --------------------------------------------------------------------------------
 
-- scripting (like shell scripts e.g. bash, csh)
+- scripting (like shell scripts, e.g., bash, csh)
 - make web sites (like these slides)
+- build GUI applications
 - **science** (like Matlab, IDL, R, Octave, Scilab)
 - etc.
 
-You just need to know 1 language to do almost everything !
+**You just need to know one language to do almost anything !**
+
 
 ----
 
 Scientific Python building blocks
 -----------------------------------
 
+* **Python interpreter**: executes Python code
+
 * **IPython**: an advanced **Python shell**
 
-* **Numpy**: provides **numerical arrays** objects
+* **NumPy**: provides **numerical arrays** objects
 
-* **Scipy**: scientific computing
-  (Optimization, regression, interpolation, etc)
+* **SciPy**: scientific computing
+  (linear algebra, optimization, regression, etc.)
 
 * **Matplotlib** a.k.a. Pylab: 2-D visualization, "publication-ready" plots
 
 * **Mayavi** : 3-D visualization
+
+* Many application specific packages for e.g., machine learning,
+  image processing, symbolic math, ...
+  (an `incomplete list`_)
+
+.. _`incomplete list`: http://www.scipy.org/Topical_Software
 
 ----
 
@@ -52,13 +77,19 @@ Start the **IPython** shell (from terminal or Windows cmd shell):
 
 .. sourcecode:: bash
 
-    $ ipython -pylab
+    $ ipython --pylab
 
 Getting a scientific-Python environment:
 
 * Comes with every Linux distribution
 * Python(x,y) on Windows: http://www.pythonxy.com
 * EPD: http://www.enthought.com/products/epd.php
+
+At the Martinos Center:
+
+* See here_ for how to use scientific-Python on your CentOS workstation
+
+.. _here: http://surfer.nmr.mgh.harvard.edu/fswiki/DevelopersGuide/NMRCenterPython/UsersGuide
 
 ----
 
@@ -69,14 +100,14 @@ Start IPython:
 
 .. sourcecode:: bash
 
-    $ ipython -pylab
+    $ ipython --pylab
 
 .. raw:: html
 
   <span class="pylab_demo">
 
 .. image:: images/snapshot_ipython.png
-  :scale: 60%
+  :scale: 75%
 
 .. raw:: html
 
@@ -91,10 +122,37 @@ Once you have started the interpreter, type:
 
 ----
 
+My first script
+--------------------------------------------------------------------------------
+
+Let's say the file ``my_script.py`` contains:
+
+.. sourcecode:: python
+
+    s = 'hello world!'
+    print s
+
+In IPython:
+
+.. sourcecode:: ipython
+
+    In [1]: %run my_script.py  # in Matlab just `my_script`
+    Hello world!
+
+    In [2]: s
+    Out[2]: 'Hello world!'
+
+    In [3]: %whos
+    Variable   Type    Data/Info
+    ----------------------------
+    s          str     Hello world!
+
+-----
+
 If you are scared of the terminal
 --------------------------------------------------------------------------------
 
-You can use Spyder
+..you can use Spyder_
 
 .. sourcecode:: bash
 
@@ -110,6 +168,12 @@ You can use Spyder
 .. raw:: html
 
   </span>
+
+PS: Spyder is written in Python and uses PySide_/PyQt_ for the GUI
+
+.. _Spyder: http://code.google.com/p/spyderlib
+.. _PySide: http://www.pyside.org
+.. _PyQt: http://www.riverbankcomputing.co.uk/software/pyqt/intro
 
 ----
 
@@ -278,6 +342,8 @@ So that ``len(l[start:stop]) == (stop - start)``
     [4, 5]
     >>> l[::2]  # every 2 element : in Matlab l(1:2:end)
     [1, 3, 5]
+    >>> l[::-1]  # reverse list : in Matlab l(end:-1:1)
+    [5, 4, 3, 2, 1]
 
 ----
 
@@ -308,7 +374,7 @@ values**. It is an **unordered** container:
 Getting help
 --------------------------------------------------------------------------------
 
-Start IPython:
+Using the built-in help in IPython:
 
 .. sourcecode:: python
 
@@ -325,10 +391,76 @@ Start IPython:
 
 -----
 
-Numpy
+Basics of control flow: Conditional statements
 --------------------------------------------------------------------------------
 
-**Numpy** is:
+.. sourcecode:: python
+
+    >>> a = 10
+    >>> if a == 1:
+    >>>     print(1)
+    >>> elif a == 2:
+    >>>     print(2)
+    >>> else:
+    >>>     print('A lot')
+
+**Blocks are delimited by indentation**
+
+-----
+
+Basics of control flow: Loops
+--------------------------------------------------------------------------------
+
+.. sourcecode:: python
+
+    >>> for word in ['cool', 'powerful', 'readable']:
+    >>>     print('Python is %s' % word)
+    >>>
+    Python is cool
+    Python is powerful
+    Python is readable
+
+**you can iterate over lists, arrays, dict etc.**
+
+-----
+
+My first function
+--------------------------------------------------------------------------------
+
+Functions start with **def**:
+
+.. sourcecode:: python
+
+    >>> def disk_area(radius):
+    >>>     return 3.14 * radius * radius
+    >>>
+    >>> disk_area(1.5)
+    7.0649999999999995
+
+-----
+
+My second function
+--------------------------------------------------------------------------------
+
+**Arguments are not copied** when passed to a function (not like with Matlab)
+
+.. sourcecode:: python
+
+    >>> def foo(a):
+    >>>     a.append(1)
+    >>> 
+    >>> a = [0]
+    >>> foo(a)
+    >>> print a  # a has been modified !!!
+    [0, 1]
+
+-----
+
+
+NumPy
+--------------------------------------------------------------------------------
+
+**NumPy** is:
 
     - an extension package to Python for multidimensional arrays (matrices in n-dimensions)
 
@@ -349,7 +481,7 @@ or: http://scipy-lectures.github.com/intro/numpy/numpy.html
 
 -----
 
-Numpy: Creating arrays
+NumPy: Creating arrays
 --------------------------------------------------------------------------------
 
 * 1-D
@@ -373,7 +505,7 @@ Getting the size and dimensions of the array:
 
 -----
 
-Numpy: Creating arrays
+NumPy: Creating arrays
 --------------------------------------------------------------------------------
 
 * 2-D
@@ -403,7 +535,7 @@ Numpy: Creating arrays
 
 -----
 
-Numpy: Creating arrays
+NumPy: Creating arrays
 --------------------------------------------------------------------------------
 
 * Evenly spaced:
@@ -428,7 +560,7 @@ Numpy: Creating arrays
 
 -----
 
-Numpy: Creating arrays
+NumPy: Creating arrays
 --------------------------------------------------------------------------------
 
 * Common arrays: **ones**, **zeros** and **eye** (like in Matlab)
@@ -456,9 +588,19 @@ Numpy: Creating arrays
            [ 0.,  1.,  0.],
            [ 0.,  0.,  1.]])
 
+
+* Random arrays
+
+.. sourcecode:: python
+
+    >>> d = np.random.randn(2, 2)
+    >>> d
+    array([[-0.95731365, -0.30260599],
+           [ 0.43354227, -1.09239752]])
+
 -----
 
-.. Numpy: Creating arrays
+.. NumPy: Creating arrays
 .. --------------------------------------------------------------------------------
 .. 
 .. * Random numbers:
@@ -484,7 +626,7 @@ Numpy: Creating arrays
 .. 
 .. -----
 .. 
-.. Numpy: Basic data types
+.. NumPy: Basic data types
 .. --------------------------------------------------------------------------------
 .. 
 .. .. sourcecode:: python
@@ -515,7 +657,7 @@ Numpy: Creating arrays
 .. 
 .. -----
 
-Numpy : Indexing and slicing
+NumPy: Indexing and slicing
 --------------------------------------------------------------------------------
 
 .. sourcecode:: python
@@ -537,7 +679,7 @@ Numpy : Indexing and slicing
 
 -----
 
-Numpy : Indexing and slicing
+NumPy: Indexing and slicing
 --------------------------------------------------------------------------------
 
 Like Python lists **arrays can be sliced**:
@@ -554,7 +696,7 @@ Like Python lists **arrays can be sliced**:
 
 -----
 
-Numpy : Copies and views
+NumPy: Copies and views
 --------------------------------------------------------------------------------
 
 * A slicing operation creates a **view** on the original array
@@ -579,7 +721,7 @@ Numpy : Copies and views
 
 -----
 
-Numpy : Copies and views
+NumPy: Copies and views
 --------------------------------------------------------------------------------
 
 If you want a copy you have to specify it:
@@ -598,10 +740,10 @@ but it allows to **save both memory and time**.
 
 -----
 
-.. Numpy: file formats
+.. NumPy: file formats
 .. --------------------------------------------------------------------------------
 .. 
-.. Numpy has its own format:
+.. NumPy has its own format:
 .. 
 .. .. sourcecode:: python
 .. 
@@ -618,7 +760,7 @@ but it allows to **save both memory and time**.
 .. 
 .. -----
 
-Numpy : linear algebra
+NumPy: Linear algebra
 --------------------------------------------------------------------------------
 
 Matrix multiplication:
@@ -631,12 +773,17 @@ Matrix multiplication:
            [ 0.,  0.,  1.],
            [ 0.,  0.,  0.]])
     >>> b = np.diag([1, 2, 3])
-    >>> a.dot(b)
+    >>> a.dot(b)  # same as np.dot(a, b)
     array([[ 0.,  2.,  3.],
            [ 0.,  0.,  3.],
            [ 0.,  0.,  0.]])
-    >>> np.dot(a, a)
-    array([[0, 0, 1],
+
+**WARNING**: Element-wise multiplication vs. matrix multiplication
+
+.. sourcecode:: python
+
+    >>> a * b  # element-wise multiplication
+    array([[0, 0, 0],
            [0, 0, 0],
            [0, 0, 0]])
 
@@ -648,7 +795,7 @@ Transpose:
 
 -----
 
-Numpy : linear algebra
+NumPy: Linear algebra
 --------------------------------------------------------------------------------
 
 Inverse, systems of linear equations and SVD:
@@ -674,7 +821,7 @@ Inverse, systems of linear equations and SVD:
 
 -----
 
-Numpy : reductions
+NumPy: Reductions
 --------------------------------------------------------------------------------
 
 Computing sums:
@@ -763,8 +910,8 @@ Visualization with Python
 
   <span class="pylab_demo">
 
-.. image:: images/plot_fmri_contours.png
-  :scale: 95%
+.. image:: images/pysurfer.png
+  :scale: 90%
 
 .. raw:: html
 
@@ -774,51 +921,20 @@ Check out: http://pysurfer.github.com/
 
 -----
 
-My first script
+SciPy
 --------------------------------------------------------------------------------
 
-Let's say the file ``my_script.py`` contains:
+* ``scipy`` contains various toolboxes dedicated to common issues in scientific computing.
 
-.. sourcecode:: python
+* ``scipy`` can be compared to other standard scientific-computing libraries, such as the GSL (GNU Scientific  Library for C and C++), or Matlab's toolboxes.
 
-    s = 'hello world!'
-    print s
+* ``scipy`` is the core package for scientific routines in Python.
 
-In IPython:
-
-.. sourcecode:: ipython
-
-    In [1]: %run my_script.py  # in Matlab just `my_script`
-    Hello world!
-
-    In [2]: s
-    Out[2]: 'Hello world!'
-
-    In [3]: %whos
-    Variable   Type    Data/Info
-    ----------------------------
-    s          str     Hello world!
+* ``scipy`` is meant to operate efficiently on ``numpy`` arrays.
 
 -----
 
-.. Scipy
-.. --------------------------------------------------------------------------------
-.. 
-.. * ``scipy`` contains various toolboxes dedicated to common issues in
-..   scientific computing.
-.. 
-.. * ``scipy`` can be compared to other standard scientific-computing
-..   libraries, such as the GSL (GNU Scientific  Library for C and C++),
-..   or Matlab's toolboxes.
-.. 
-.. * ``scipy`` is the core package for scientific
-..   routines in Python.
-.. 
-.. * ``scipy`` is meant to operate efficiently on ``numpy`` arrays.
-.. 
-.. -----
-
-Scipy
+SciPy
 --------------------------------------------------------------------------------
 
 * ``scipy.io``  for IO (e.g. read / write Matlab files)
@@ -832,7 +948,7 @@ Scipy
 
 -----
 
-Scipy: example of ``scipy.io``
+SciPy: example of ``scipy.io``
 --------------------------------------------------------------------------------
 
 * Loading and saving Matlab files:
@@ -843,7 +959,7 @@ Scipy: example of ``scipy.io``
 
 -----
 
-Scipy: example of ``scipy.stats``
+SciPy: example of ``scipy.stats``
 --------------------------------------------------------------------------------
 
 A T-test to decide whether the two sets of observations have different means:
@@ -860,75 +976,6 @@ The resulting output is composed of:
     * The T statistic value
 
     * the *p value*
-
------
-
-Basics of control flow
---------------------------------------------------------------------------------
-
-* if/elif/else
-
-.. sourcecode:: python
-
-    >>> a = 10
-    >>> if a == 1:
-    >>>     print(1)
-    >>> elif a == 2:
-    >>>     print(2)
-    >>> else:
-    >>>     print('A lot')
-
-**Blocks are delimited by indentation**
-
------
-
-Basics of control flow
---------------------------------------------------------------------------------
-
-* for loops
-
-.. sourcecode:: python
-
-    >>> for word in ['cool', 'powerful', 'readable']:
-    >>>     print('Python is %s' % word)
-    >>>
-    Python is cool
-    Python is powerful
-    Python is readable
-
-**you can iterate or lists, arrays, dict etc.**
-
------
-
-My first function
---------------------------------------------------------------------------------
-
-Functions start with **def**:
-
-.. sourcecode:: python
-
-    >>> def disk_area(radius):
-    >>>     return 3.14 * radius * radius
-    >>>
-    >>> disk_area(1.5)
-    7.0649999999999995
-
------
-
-My second function
---------------------------------------------------------------------------------
-
-**Arguments are not copied** when passed to a function (not like with Matlab)
-
-.. sourcecode:: python
-
-    >>> def foo(a):
-    >>>     a.append(1)
-    >>> 
-    >>> a = [0]
-    >>> foo(a)
-    >>> print a  # a has been modified !!!
-    [0, 1]
 
 -----
 
