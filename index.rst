@@ -1,4 +1,4 @@
-Intro to scientific Python in 30'
+Intro to scientific Python in 60'
 ================================================================================
 
 ----
@@ -7,7 +7,7 @@ Intro to scientific Python in 30'
 What you should be able to do
 --------------------------------------------------------------------------------
 
-... in 30mins
+... in 60mins
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - Start Python
@@ -106,6 +106,28 @@ You can use Spyder
 
 .. image:: images/spyder_screenshot.png
   :scale: 40%
+
+.. raw:: html
+
+  </span>
+
+----
+
+or like Mathematica in a browser
+--------------------------------------------------------------------------------
+
+You can use the IPython notebook
+
+.. sourcecode:: bash
+
+    $ ipython notebook --pylab=inline
+
+.. raw:: html
+
+  <span class="pylab_demo">
+
+.. image:: images/notebook_screenshot.png
+  :scale: 60%
 
 .. raw:: html
 
@@ -798,6 +820,30 @@ In IPython:
     Variable   Type    Data/Info
     ----------------------------
     s          str     Hello world!
+
+
+-----
+
+Exercise
+--------------------------------------------------------------------------------
+
+Playing with an array of events stored in a txt file (MNE .eve file)
+
+.. sourcecode:: python
+
+    import os
+    import numpy as np
+    filename = os.
+    events = np.loadtxt("file.eve")
+    ...
+
+How many lines and columns does the file contains?
+
+How many different events?
+
+How many epochs with event id 1?
+
+Save a new file of events after merging events 1 and 2 as event 99.
 
 -----
 
