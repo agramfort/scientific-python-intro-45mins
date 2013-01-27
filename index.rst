@@ -416,7 +416,7 @@ Numpy: Creating arrays
 * 3-D, ...
 
 .. .. sourcecode:: python
-.. 
+..
 ..     >>> c = np.array([[[1], [2]], [[3], [4]]])
 ..     >>> c.shape  # in Matlab `size(c)`
 ..     (2, 2, 1)
@@ -482,59 +482,59 @@ Numpy: Creating arrays
 
 .. Numpy: Creating arrays
 .. --------------------------------------------------------------------------------
-.. 
+..
 .. * Random numbers:
-.. 
+..
 .. .. sourcecode:: python
-.. 
+..
 ..     >>> a = np.random.rand(4)              # uniform in [0, 1]
 ..     >>> a
 ..     array([ 0.58597729,  0.86110455,  0.9401114 ,  0.54264348])
 ..     >>> b = np.random.randn(4)             # gaussian
 ..     >>> b
 ..     array([-2.56844807,  0.06798064, -0.36823781,  0.86966886])
-.. 
+..
 .. In n-dimensions:
-.. 
+..
 .. .. sourcecode:: python
-.. 
+..
 ..     >>> c = np.random.rand(3, 3)
 ..     >>> c
 ..     array([[ 0.31976645,  0.64807526,  0.74770801],
 ..            [ 0.8280203 ,  0.8669403 ,  0.07663683],
 ..            [ 0.11527489,  0.11494884,  0.13503285]])
-.. 
+..
 .. -----
-.. 
+..
 .. Numpy: Basic data types
 .. --------------------------------------------------------------------------------
-.. 
+..
 .. .. sourcecode:: python
-.. 
+..
 ..     >>> a = np.array([1, 2, 3])
 ..     >>> a.dtype
 ..     dtype('int64')
-.. 
+..
 .. has a **different data type** than:
-.. 
+..
 .. .. sourcecode:: python
-.. 
+..
 ..     >>> b = np.array([1., 2., 3.])
 ..     >>> b.dtype
 ..     dtype('float64')
-.. 
+..
 .. You can also choose:
-.. 
+..
 .. .. sourcecode:: python
-.. 
+..
 ..     >>> c = np.array([1, 2, 3], dtype=float)
 ..     >>> c.dtype
 ..     dtype('float64')
-.. 
+..
 .. **Remark:** Much of the time you don't necessarily need to care, but remember they are there.
-.. 
+..
 .. .. Remark: There are also other types (e.g. 'complex128', 'bool', etc.)
-.. 
+..
 .. -----
 
 Numpy : Indexing and slicing
@@ -622,23 +622,47 @@ but it allows to **save both memory and time**.
 
 .. Numpy: file formats
 .. --------------------------------------------------------------------------------
-.. 
+..
 .. Numpy has its own format:
-.. 
+..
 .. .. sourcecode:: python
-.. 
+..
 ..     >>> np.save('pop.npy', data)
 ..     >>> data3 = np.load('pop.npy')
-.. 
+..
 .. But supports well-known (& more obscure) file formats:
-.. 
+..
 .. * Matlab: ``scipy.io.loadmat``, ``scipy.io.savemat``
 .. * HDF5: `h5py <http://code.google.com/p/h5py/>`__, `PyTables <http://pytables.org>`__
 .. * NetCDF: ``scipy.io.netcdf_file``, `netcdf4-python <http://code.google.com/p/netcdf4-python/>`__, ...
 .. * MatrixMarket: ``scipy.io.mmread``, ``scipy.io.mmread``
-.. 
-.. 
+..
+..
 .. -----
+
+Exercise
+--------------------------------------------------------------------------------
+
+Playing with an array of events stored in a txt file (MNE .eve file)
+
+.. sourcecode:: python
+
+    import os
+    import urllib
+    import numpy as np
+    f = urllib.urlopen("https://dl.dropbox.com/u/2140486/sample.eve")
+    events = np.loadtxt(f, dtype=np.int)
+    ...
+
+How many lines and columns does the file contains?
+
+How many different events?
+
+How many epochs with event id 1?
+
+Save a new file of events after merging events 1 and 2 as event 99.
+
+-----
 
 Numpy : linear algebra
 --------------------------------------------------------------------------------
@@ -720,6 +744,93 @@ Sum by rows and by columns:
     array([2, 4])
 
 Same with ``np.mean, np.argmax, np.argmin, np.min, np.max, np.cumsum, np.sort`` etc.
+
+-----
+
+Basics of control flow
+--------------------------------------------------------------------------------
+
+* if/elif/else
+
+.. sourcecode:: python
+
+    >>> a = 10
+    >>> if a == 1:
+    >>>     print(1)
+    >>> elif a == 2:
+    >>>     print(2)
+    >>> else:
+    >>>     print('A lot')
+
+**Blocks are delimited by indentation**
+
+-----
+
+Basics of control flow
+--------------------------------------------------------------------------------
+
+* for loops
+
+.. sourcecode:: python
+
+    >>> for word in ['cool', 'powerful', 'readable']:
+    >>>     print('Python is %s' % word)
+    >>>
+    Python is cool
+    Python is powerful
+    Python is readable
+
+**you can iterate or lists, arrays, dict etc.**
+
+-----
+
+My first function
+--------------------------------------------------------------------------------
+
+Functions start with **def**:
+
+.. sourcecode:: python
+
+    >>> def disk_area(radius):
+    >>>     return 3.14 * radius * radius
+    >>>
+    >>> disk_area(1.5)
+    7.0649999999999995
+
+-----
+
+My second function
+--------------------------------------------------------------------------------
+
+**Arguments are not copied** when passed to a function (not like with Matlab)
+
+.. sourcecode:: python
+
+    >>> def foo(a):
+    >>>     a.append(1)
+    >>>
+    >>> a = [0]
+    >>> foo(a)
+    >>> print a  # a has been modified !!!
+    [0, 1]
+
+-----
+
+Exercise
+--------------------------------------------------------------------------------
+
+Compute Pi using the Wallis formula with and without Numpy
+
+.. raw:: html
+
+  <span class="pylab_demo">
+
+.. image:: images/wallis.png
+  :scale: 100%
+
+.. raw:: html
+
+  </span>
 
 -----
 
@@ -824,44 +935,21 @@ In IPython:
 
 -----
 
-Exercise
---------------------------------------------------------------------------------
-
-Playing with an array of events stored in a txt file (MNE .eve file)
-
-.. sourcecode:: python
-
-    import os
-    import numpy as np
-    filename = os.
-    events = np.loadtxt("file.eve")
-    ...
-
-How many lines and columns does the file contains?
-
-How many different events?
-
-How many epochs with event id 1?
-
-Save a new file of events after merging events 1 and 2 as event 99.
-
------
-
 .. Scipy
 .. --------------------------------------------------------------------------------
-.. 
+..
 .. * ``scipy`` contains various toolboxes dedicated to common issues in
 ..   scientific computing.
-.. 
+..
 .. * ``scipy`` can be compared to other standard scientific-computing
 ..   libraries, such as the GSL (GNU Scientific  Library for C and C++),
 ..   or Matlab's toolboxes.
-.. 
+..
 .. * ``scipy`` is the core package for scientific
 ..   routines in Python.
-.. 
+..
 .. * ``scipy`` is meant to operate efficiently on ``numpy`` arrays.
-.. 
+..
 .. -----
 
 Scipy
@@ -906,75 +994,6 @@ The resulting output is composed of:
     * The T statistic value
 
     * the *p value*
-
------
-
-Basics of control flow
---------------------------------------------------------------------------------
-
-* if/elif/else
-
-.. sourcecode:: python
-
-    >>> a = 10
-    >>> if a == 1:
-    >>>     print(1)
-    >>> elif a == 2:
-    >>>     print(2)
-    >>> else:
-    >>>     print('A lot')
-
-**Blocks are delimited by indentation**
-
------
-
-Basics of control flow
---------------------------------------------------------------------------------
-
-* for loops
-
-.. sourcecode:: python
-
-    >>> for word in ['cool', 'powerful', 'readable']:
-    >>>     print('Python is %s' % word)
-    >>>
-    Python is cool
-    Python is powerful
-    Python is readable
-
-**you can iterate or lists, arrays, dict etc.**
-
------
-
-My first function
---------------------------------------------------------------------------------
-
-Functions start with **def**:
-
-.. sourcecode:: python
-
-    >>> def disk_area(radius):
-    >>>     return 3.14 * radius * radius
-    >>>
-    >>> disk_area(1.5)
-    7.0649999999999995
-
------
-
-My second function
---------------------------------------------------------------------------------
-
-**Arguments are not copied** when passed to a function (not like with Matlab)
-
-.. sourcecode:: python
-
-    >>> def foo(a):
-    >>>     a.append(1)
-    >>> 
-    >>> a = [0]
-    >>> foo(a)
-    >>> print a  # a has been modified !!!
-    [0, 1]
 
 -----
 
