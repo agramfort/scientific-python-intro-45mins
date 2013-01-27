@@ -26,7 +26,7 @@ show-chromium: all
 	chromium $(HTMLTARGET)
 
 %.html: %.rst
-	landslide -t ./themes -i $< -d $@
+	landslide -t ./themes/mytheme -i $< -d $@
 
 $(PDF): $(TEX)
 

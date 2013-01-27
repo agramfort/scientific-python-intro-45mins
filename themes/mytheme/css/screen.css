@@ -1,6 +1,30 @@
+h1, h2, h3, h4, h5, h6, p, ul, li {
+    font-family: sans-serif !important;
+}
+
+ul, li {
+    color: #555753 !important;
+    font-size: 120% !important;
+}
+
+div.slide p {
+  font-size: 130% !important;
+}
+
+header h1, header h2, header h3, header h4, header h5, header h6 {
+    color: #204a87 !important;
+    font-weight: bold !important;
+}
+
+section h1, section h2, section h3, section h4, section h5, section h6 {
+    color: #3465a4 !important;
+}
+
+img { display: block; margin: auto; }
+
 body {
-  font: 14px "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
-  background: #778;
+  font: 15px "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
+  background: #555753;
   padding: 0;
   margin: 0;
   overflow: hidden;
@@ -12,39 +36,40 @@ div.presentation {
   display: table-cell;
   vertical-align: middle;
   height: 100%;
-  background: inherit;
+  background: -webkit-gradient(linear, left bottom, left top, from(#2e3436), to(#555753));
+  background-color: #555753;
+  background: -moz-linear-gradient(bottom, #555753, #2e3436);
 }
 
-div.presentation > h1 {
-  display: none;
-}
-
-div.slides {
+div.slides, body.expose div.slides.nocontext {
   width: 100%;
   height: 100%;
-  overflow: hidden;
   left: 0;
   top: 0;
   position: absolute;
   display: block;
-  -webkit-transition: -webkit-transform 1s ease-in-out;
-  -moz-transition: -moz-transform 1s ease-in-out;
-  -o-transition: -o-transform 1s ease-in-out;
+}
+
+div.slides.nocontext {
+  width: 900px;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+  left: auto;
+  top: auto;
 }
 
 div.slide {
-  display: inline;
+  background: url('background.png') bottom center no-repeat;
+  display: none;
   position: absolute;
   overflow: hidden;
   width: 900px;
   height: 700px;
-  margin-top: -350px;
-  margin-left: -400px;
   left: 50%;
   top: 50%;
-  background: -webkit-gradient(linear, left bottom, left top, from(#bbd), to(#fff));
-  background-color: #eee;
-  background: -moz-linear-gradient(bottom, #bbd, #fff);
+  margin-top: -350px;
+  background-color: #fff;
   -webkit-transition: margin 0.25s ease-in-out;
   -moz-transition: margin 0.25s ease-in-out;
   -o-transition: margin 0.25s ease-in-out;
@@ -62,173 +87,7 @@ div.slide {
   -webkit-border-bottom-left-radius: 20px;
 }
 
-div#current_presenter_notes {
-	display: none;
-}
 
-div.slide div.presenter_notes {
-	display: none;
-}
-
-/* Expose */
-
-body.expose div.slides {
-  float: left;
-  position: relative;
-  overflow: auto;
-  margin-bottom: 10px;
-}
-
-body.expose div.slide {
-  display: block;
-  float: left;
-  position: relative;
-  left: auto !important;
-  top: auto !important;
-  margin: 10px !important;
-  -webkit-transition: none;
-  -moz-transition: none;
-  -o-transition: none;  
-  -moz-transform: scale(.33, .33);
-  -moz-transform-origin: 0 0;
-  -webkit-transform: scale(.33, .33);
-  -webkit-transform-origin: 0 0;
-  -o-transform: scale(.33, .33);
-  -o-transform-origin: 0 0;
-  cursor: pointer;
-}
-
-body.expose div.slide:hover {
-  background: -webkit-gradient(linear, left bottom, left top, from(#bdd), to(#fff));
-  background-color: #eee;
-  background: -moz-linear-gradient(bottom, #bdd, #fff);
-}
-
-body.expose .slide-wrapper {
-  float: left;
-  position: relative;
-  margin: .5%;
-  width: 300px;
-  height: 233px;
-}
-
-body.expose .slide footer {
-}
-
-body.expose .slide .inner {
-}
-
-body.expose .slide.far-past,
-body.expose .slide.past,
-body.expose .slide.future,
-body.expose .slide.far-future {
-  margin-left: 0;
-}
-
-body.expose .slide.current {
-  background: -webkit-gradient(linear, left bottom, left top, from(#ddb), to(#fff));
-  background-color: #eee;
-  background: -moz-linear-gradient(bottom, #ddb, #fff);
-  border: 16px solid #fff;
-  -moz-transform: scale(.315, .315);
-  -moz-transform-origin: 0 0;
-  -webkit-transform: scale(.315, .315);
-  -webkit-transform-origin: 0 0;
-  -o-transform: scale(.315, .315);
-  -o-transform-origin: 0 0;
-}
-
-/* Presenter Mode */
-
-body.presenter_view div.slide {
-  display: inline;
-  position: absolute;
-  overflow: hidden;
-  -moz-transform: scale(.5, .5);
-  -moz-transform-origin: 0 0;
-  -webkit-transform: scale(.5, .5);
-  -webkit-transform-origin: 0 0;
-  -o-transform: scale(.5, .5);
-  -o-transform-origin: 0 0;
-	margin-top: -300px;
-}
-
-body.presenter_view .slide.far-past {
-  display: block;
-  margin-left: -1500px;
-}
-
-body.presenter_view .slide.past {
-  display: block;
-  margin-left: -975px;
-}
-
-body.presenter_view .slide.current {
-  display: block;
-  margin-left: -475px;
-  border: 8px solid maroon;
-  z-index: 2;
-}
-
-body.presenter_view .slide.future {
-  display: block;
-  margin-left: 25px;
-  z-index: 1;
-}
-
-body.presenter_view .slide.far-future {
-  display: block;
-  margin-left: 525px;
-}
-
-body.presenter_view div#current_presenter_notes {
-	visibility: visible;
-	display: block;
-	position: absolute;
-	overflow: auto;
-	vertical-align: middle;
-	left: 50%;
-	top: 50%;
-	margin-left: -475px;
-	margin-top: 100px;
-	z-index: 2;
-	width: 950px;
-	border-style: solid;
-	height: 30%;
-	background-color: silver;
-}
-
-body.presenter_view div#current_presenter_notes section {
-  font-family: 'Lucida Grande';
-  color: black;
-  text-shadow: rgba(0, 0, 0, 0.2) 0 2px 5px;
-  display: block;
-  overflow: visible;
-  position: relative;
-  background-color: #fffeff;
-  height: 120px;
-  margin-right: 30px;
-  margin-top: 60px;
-  margin-left: 30px;
-  padding-right: 10px;
-  padding-left: 10px;
-  padding-top: 10px;
-}
-
-body.presenter_view div#current_presenter_notes section p {
-	margin: 0;
-}
-
-body.presenter_view div#current_presenter_notes h1 {
-	font-size: 50%;
-	display: block;
-}
-
-/* Slide styles */
-
-div.slide p {
-  font-size: 24px;
-}
 
 .slide.far-past {
   display: block;
@@ -265,10 +124,11 @@ body.three-d div.slides {
 /* Content */
 
 header:not(:only-child) {
-  font-family: 'Lucida Grande';
+  font-family: "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
   font-weight: normal;
   font-size: 50px;
   letter-spacing: -.05em;
+  color: white;
   color: black;
   text-shadow: rgba(0, 0, 0, 0.2) 0 2px 5px;
   position: absolute;
@@ -279,9 +139,8 @@ header:not(:only-child) {
 }
 
 header h1, header h2, header h3, header h4, header h5, header h6 {
-  color: #355F7C;
   display: inline;
-  font-size: 100%;
+  font-size: 90%;
   font-weight: normal;
   padding: 0;
   margin: 0;
@@ -292,18 +151,32 @@ header h2:first-child {
 }
 
 section, .slide header:only-child h1 {
-  font-family: 'Lucida Grande';
+  font-family: "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
   color: #3f3f3f;
   text-shadow: rgba(0, 0, 0, 0.2) 0 2px 5px;
   margin-left: 30px;
   margin-right: 30px;
-  margin-top: 85px;
+  margin-top: 100px;
   display: block;
   overflow: hidden;
 }
 
-.slide header:only-child h1 {
-  color: #355F7C;
+section img.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+section img.align-right {
+  display: block;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+section img.align-left {
+  display: block;
+  margin-right: auto;
+  margin-left: 0;
 }
 
 a {
@@ -315,13 +188,18 @@ a {
 }
 
 pre {
-  font-size: 20px;
+  font-size: 18px;
   font-family: Monaco, Courier, monospace;
+  background-color: #e8e8e8;
+  border-style: solid;
+  border-width: 1px;
+  padding: 1px;
+  border-color: #204a87;
 }
 
 li {
   padding: 10px 0;
-  font-size: 26px;
+  font-size: 20px;
 }
 
 .slide header:only-child h1 {
@@ -336,69 +214,7 @@ li {
   margin-bottom:100px;
 }
 
-div.slide blockquote p{
-  font-size: 25px;
-  line-height: 150%;
-  font-style: italic;
-}
-
-div.slide blockquote{
-  font-size: 20px;
-  line-height: 150%;
-}
-
-
-.h3 {
-  height: 50px;
-  display: block;
-}
-
-h3 {
-  font-size: 35px;
-  right: 5px;
-  position: absolute;
-  color: #355F7C;
-  margin-top: -50px;
-  margin-right: 50px;
-}
-
-#plan ul{
-  list-style: none
-}
-
-#plan li {
-  font-size: 30px;
-  line-height: 50px;
-}
-
-img {
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-}
-
-span.math-example img{
-  display: inline;
-  margin-left: 5px;
-  margin-right: 5px;
-}
-
-section table, section table thead, section table tbody{
-  font-size: 30px;
-  margin: auto;
-}
-
-section table tr {
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-span.math-example p, span.math-example ul, span.math-example li {
-  font-size: 15px;
-}
-
 .sidebar {
-  clear: both;
   background: -webkit-gradient(linear, top right, bottom right, from(#dde), to(#fff));
   -webkit-transition: margin 0.25s ease-in-out;
   background-color: #eee;
@@ -471,90 +287,18 @@ span.math-example p, span.math-example ul, span.math-example li {
 aside {
   display: none;
 }
-
-aside.source {
-  position: absolute;
-  bottom: 6px;
-  left: 10px;
-  text-indent: 10px;
-}
-
-aside.page_number {
-  position: absolute;
-  bottom: 6px;
-  right: 10px;
-  text-indent: 10px;
-}
-
-span.plan li {
-  font-size: 35px;
-  margin-top: 35px;
-  list-style: none;
-}
-
-span.float-right {
-  float: right;
-}
-
-span.float-left {
-  float: left;
-}
-
-span.small li{
-  font-size: 165%;
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
-
-span.regression img {
-  margin-top: -100px;
-  padding-left: 150px;
-}
-
-span.gaussian img {
-  margin-top: -60px;
-  padding-left: 220px;
-}
-
-span.hyperplan img {
-  margin-top: -100px;
-}
-
-span.explosion_donnee img {
-  margin-top: 100px;
-}
-
-span.important p{
-  font-size: 30px;
-  font-weight: bold;
-}
-
-span.big p{
-  text-shadow: rgba(0, 0, 0, 0.4) 0 3px 7px;
-  font-size: 60px;
-  height: 900px;
-  line-height: 100%;
-  margin-top: 200px;
-  text-align: center;
-  vertical-align: middle;
-  width: 800px;
-}
-
-blockquote.medium {
-  font-weight: bold;
-}
-
-span.simple {
-  color: #4EACC5;
-}
-
-span.efficace {
-  color: #FF9C34;
-}
-
-span.documente {
-  color: #4E9A06;
-}
+  aside.source {
+    position: absolute;
+    bottom: 6px;
+    left: 10px;
+    text-indent: 10px;
+  }
+  aside.page_number {
+    position: absolute;
+    bottom: 6px;
+    right: 10px;
+    text-indent: 10px;
+  }
 
 .notes {
   display: none;
@@ -564,26 +308,81 @@ span.documente {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
 }
-
-div.slide p.notes {
+  div.slide p.notes {
     font-size: 90%;
 }
 
-pre.highlight {
-  overflow-y: hidden;
-  display: inline;
-  white-space: pre;
+/* Expose */
 
-  font-size: 15px;
+body.expose div.slides {
+  float: left;
+  position: relative;
+  overflow: auto;
+  margin-bottom: 10px;
 }
 
+body.expose div.slide {
+  display: block;
+  float: left;
+  position: relative;
+  left: auto !important;
+  top: auto !important;
+  margin: 10px !important;
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;  
+  -moz-transform: scale(.33, .33);
+  -moz-transform-origin: 0 0;
+  -webkit-transform: scale(.33, .33);
+  -webkit-transform-origin: 0 0;
+  -o-transform: scale(.33, .33);
+  -o-transform-origin: 0 0;
+  cursor: pointer;
+}
+
+body.expose div.slide:hover {
+  background: -webkit-gradient(linear, left bottom, left top, from(#bdd), to(#fff));
+  background-color: #eee;
+  background: -moz-linear-gradient(bottom, #bdd, #fff);
+}
+
+body.expose .slide-wrapper {
+  float: left;
+  position: relative;
+  margin: .5%;
+  width: 300px;
+  height: 233px;
+}
+
+body.expose .slide footer {
+}
+
+body.expose .slide .inner {
+}
+
+body.expose .slide.far-past,
+body.expose .slide.past,
+body.expose .slide.future,
+body.expose .slide.far-future {
+  margin-left: 0;
+}
+
+body.expose .slide.current {
+  background: -webkit-gradient(linear, left bottom, left top, from(#ddb), to(#fff));
+  background-color: #eee;
+  background: -moz-linear-gradient(bottom, #ddb, #fff);
+  border: 16px solid #fff;
+  -moz-transform: scale(.315, .315);
+  -moz-transform-origin: 0 0;
+  -webkit-transform: scale(.315, .315);
+  -webkit-transform-origin: 0 0;
+  -o-transform: scale(.315, .315);
+  -o-transform-origin: 0 0;
+}
 
 /* Pygments default theme */
 .hll { background-color: #ffffcc }
-.c { color: #408080;
-     font-style: italic;
-     font-size: 20px;
-  } /* Comment */
+.c { color: #408080; font-style: italic } /* Comment */
 .err { border: 1px solid #FF0000 } /* Error */
 .k { color: #008000; font-weight: bold } /* Keyword */
 .o { color: #666666 } /* Operator */
@@ -643,3 +442,118 @@ pre.highlight {
 .vg { color: #19177C } /* Name.Variable.Global */
 .vi { color: #19177C } /* Name.Variable.Instance */
 .il { color: #666666 } /* Literal.Number.Integer.Long */
+
+/* Presenter Mode */
+
+body.presenter_view div.slide {
+  display: inline;
+  position: absolute;
+  overflow: hidden;
+  -moz-transform: scale(.5, .5);
+  -moz-transform-origin: 0 0;
+  -webkit-transform: scale(.5, .5);
+  -webkit-transform-origin: 0 0;
+  -o-transform: scale(.5, .5);
+  -o-transform-origin: 0 0;
+  margin-top: -300px;
+}
+
+body.presenter_view .slide.far-past {
+  display: block;
+  margin-left: -1500px;
+}
+
+body.presenter_view .slide.past {
+  display: block;
+  margin-left: -975px;
+}
+
+body.presenter_view .slide.current {
+  display: block;
+  margin-left: -475px;
+  border: 8px solid maroon;
+  z-index: 2;
+}
+
+body.presenter_view .slide.future {
+  display: block;
+  margin-left: 25px;
+  z-index: 1;
+}
+
+body.presenter_view .slide.far-future {
+  display: block;
+  margin-left: 525px;
+}
+
+body.presenter_view div#current_presenter_notes {
+  visibility: visible;
+  display: block;
+  position: absolute;
+  overflow: auto;
+  vertical-align: middle;
+  left: 50%;
+  top: 50%;
+  margin-left: -475px;
+  margin-top: 100px;
+  z-index: 2;
+  width: 950px;
+  border-style: solid;
+  height: 30%;
+  background-color: silver;
+}
+
+body.presenter_view div#current_presenter_notes section {
+  font-family: "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
+  color: black;
+  text-shadow: rgba(0, 0, 0, 0.2) 0 2px 5px;
+  display: block;
+  overflow: visible;
+  position: relative;
+  background-color: #fffeff;
+  height: 120px;
+  margin-right: 30px;
+  margin-top: 60px;
+  margin-left: 30px;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-top: 10px;
+}
+
+body.presenter_view div#current_presenter_notes section p {
+  margin: 0;
+}
+
+body.presenter_view div#current_presenter_notes h1 {
+  font-size: 50%;
+  display: block;
+}
+
+div#current_presenter_notes {
+  display: none;
+}
+
+div.slide div.presenter_notes {
+  display: none;
+}
+
+#blank {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: black;
+  width: 100%;
+  height: 100%;
+  z-index: 64;
+  display: none;
+}
+
+
+.mytitle {
+    font-size: 350%;
+}
+
+.authors {
+    font-size: 200%;
+}
+
